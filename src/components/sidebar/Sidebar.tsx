@@ -1,24 +1,26 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
-import { sidebarStyles, logoStyles, iconContainerStyles, } from './sidebar.styles';
-import Icon from '../../ui/Icon';
+import { Icon } from '../../ui/Icon';
+import { Menu } from './Menu';
+import styled from '@emotion/styled';
+import theme from '../../styles/theme';
 
-const Sidebar: React.FC = () => {
-  return (
-    <div css={sidebarStyles}>
-      <div css={logoStyles} />
-      <div css={iconContainerStyles}>
-        <Icon src='assets/icons/home2.svg' />
-        <Icon src='assets/icons/message.svg' />
-        <Icon src='assets/icons/calendar2.svg' />
-        <Icon src='assets/icons/chart21.svg' />
-        <Icon src='assets/icons/searchnormal1.svg' />
-      </div>
-      <div >
-        <Icon src='assets/icons/setting2.svg' />
-      </div>
-    </div>
-  );
-};
+const SidebarElement = styled.div`
+   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px 24px;
+  gap: 10px;
+  height: 100%;
+  background: ${theme.colors.background};
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.08);
+`;
+
+const Sidebar: React.FC = () => (
+  <SidebarElement>
+    <Menu />
+    <Icon src='assets/icons/setting2.svg' />
+  </SidebarElement>
+);
 
 export default Sidebar;

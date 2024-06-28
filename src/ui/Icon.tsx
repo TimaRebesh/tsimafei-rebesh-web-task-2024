@@ -1,28 +1,33 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import { css as emotionCss, SerializedStyles } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
+import theme from '../styles/theme';
 
 interface IconProps {
   src: string;
   width?: string;
   height?: string;
   onClick?: () => void;
-  css?: SerializedStyles;
+  selected?: boolean;
 }
 
-const Icon: React.FC<IconProps> = ({ src, width = '24px', height = '24px', onClick, css }) => {
+export const Icon: React.FC<IconProps> = ({
+  src,
+  width = '24px',
+  height = '24px',
+  onClick,
+  selected = false
+}) => {
+  const iconStyles = (selected: boolean): SerializedStyles => css`
+    background-color: ${selected ? theme.colors.primary : 'black'};
+    -webkit-mask: url(${src}) no-repeat center;
+    mask: url(${src}) no-repeat center;
+    width: ${width};
+    height: ${height};
+    cursor: pointer;
+  `;
+
   return (
-    <img
-      src={src}
-      width={width}
-      height={height}
-      onClick={onClick}
-      css={emotionCss`
-        ${css}
-      `}
-      alt="icon"
-    />
+    <div css={iconStyles(selected)} onClick={onClick} />
   );
 };
-
-export default Icon;

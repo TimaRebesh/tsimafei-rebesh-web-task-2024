@@ -1,8 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode } from 'react';
-import { layoutWrapper, messagesPanel, chatPanel, directoryPanel } from './mainLayout.styles';
+import { css } from '@emotion/react';
 import Sidebar from '../sidebar/Sidebar';
 import DirectoryPanel from '../directoryPanel/DirectoryPanel';
+
+export const layoutWrapper = css`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+`;
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -12,13 +18,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div css={layoutWrapper}>
       <Sidebar />
-      <div css={messagesPanel}>
-        {/* Содержимое MessagesPanel */}
-      </div>
-      <div css={chatPanel}>
-        {children}
-      </div>
-      <DirectoryPanel />
+
+      {/* <DirectoryPanel /> */}
     </div>
   );
 };
