@@ -1,4 +1,5 @@
 export interface User {
+  id: number;
   name: string;
   avatar: string;
 }
@@ -8,11 +9,15 @@ export interface Label {
   text: string;
 }
 
+export interface LastMessage {
+  date: number;
+  text: string;
+}
+
 export interface MessageData {
   id: number;
   user: User;
-  text: string;
-  time: string;
+  lastMessage: LastMessage;
   labels: Label[];
 }
 

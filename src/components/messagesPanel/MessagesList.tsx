@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { MessagesSearch } from './MessagesSearch';
 import { Message } from './Message';
-import { messagesData } from './mockData';
+import { messagesData } from '../../utils/mockData';
 import { Preloader } from 'ui/preloader';
 
 const Container = styled.div`
@@ -33,7 +33,7 @@ export const MessageList = () => {
       <MessagesSearch />
       <MessageListComponent>
         {data.map((message) => (
-          <Message key={message.id} message={message} />
+          <Message key={message.user.id} message={message} />
         ))}
       </MessageListComponent>
     </Container>

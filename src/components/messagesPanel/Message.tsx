@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import { MessageData } from 'types/types';
 import { CustomLabel } from 'ui/label';
 import theme from 'styles/theme';
+import { useDispatch } from 'react-redux';
+import { selectMessage } from 'store/actions/messagesActions';
 
 const MessageContainer = styled.div`
   display: flex;
@@ -68,11 +70,10 @@ interface MessageProps {
 
 export const Message: React.FC<MessageProps> = ({ message }) => {
 
-  // const data = JSON.parse('[{"name":"Tim","text":"Hello","id":"b40ce360-1af4-4df0-8b2d-d29b0865f15e","dateAdded":1573961291493,"dateEdited":1574224441310}]');
-  // console.log(data);
+  const dispatch = useDispatch();
 
   const onClick = () => {
-    console.log(message.id);
+    dispatch(selectMessage(message));
   };
 
   return (
@@ -80,10 +81,10 @@ export const Message: React.FC<MessageProps> = ({ message }) => {
       <Avatar src={message.user.avatar} />
       <MessageContent>
         <NameContainer>
-          <span>Full name here</span>
-          <Time>12m</Time>
+          <span>{message.user.name}</span>
+          <Time>{message.lastMessage.date}</Time>
         </NameContainer>
-        <MessageText>Enter your message here</MessageText>
+        <MessageText>{message.lastMessage.text}</MessageText>
         <LabelsContainer>
           {message.labels.map((label, index) => {
             return <CustomLabel key={index} text={label.text} type={label.type} />;

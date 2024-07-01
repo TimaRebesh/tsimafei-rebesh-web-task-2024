@@ -9,28 +9,21 @@ import { Message } from 'types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMessages } from 'store/actions/chatActions';
 import { RootState } from 'store/reducers/rootReducer';
+import styled from '@emotion/styled';
+import theme from 'styles/theme';
 
-interface ChatPanelProps {
+const NoneConversation = styled.div`
+background-color: ${theme.colors.secondary};
+width: 100%;
+`;
 
-}
 
-
-// const messages: Message[] = [
-//   {
-//     name: 'Tim',
-//     text: 'Hello',
-//     id: 'b40ce360-1af4-4df0-8b2d-d29b0865f15e',
-//     dateAdded: 1573961291493,
-//     dateEdited: 1574224441310,
-//   },
-//   // Add other messages here...
-// ];
-
-const ChatPanel: React.FC<ChatPanelProps> = () => {
+const ChatPanel: React.FC = () => {
 
   const dispatch = useDispatch();
   const messages = useSelector((state: RootState) => state.chat.messages);
-  console.log(messages);
+  const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);
+  console.log(selectedMessage);
 
   useEffect(() => {
     dispatch(fetchMessages());
@@ -41,7 +34,10 @@ const ChatPanel: React.FC<ChatPanelProps> = () => {
     <>
       <MessagesPanel />
       <Divider vertical />
-      <ConversationPanel messages={messages} />
+      {selectedMessage
+        ? <ConversationPanel messages={messages} />
+        : <NoneConversation />
+      }
       <Divider vertical />
       {/* <MessageList messages={messages} />
       <div css={chatInputStyles}>

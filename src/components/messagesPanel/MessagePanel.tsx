@@ -14,6 +14,7 @@ const MessagePanelContainer = styled.div`
   flex-direction: column;
   width: 349px;
   height: 100%;
+  flex-shrink: 0;
 `;
 
 export const MessagesPanel: React.FC = () => {
