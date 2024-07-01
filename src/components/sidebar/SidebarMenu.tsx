@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import theme from "../../styles/theme";
 import { Icon } from "../../ui/Icon";
 import styled from "@emotion/styled";
@@ -11,6 +12,7 @@ const MenuElement = styled.div`
   padding: 0px;
   gap: 48px;
 `;
+
 
 const LogoElement = styled.div`
    position: relative;
@@ -58,7 +60,7 @@ const menuElements: MenuElement[] = [
   { id: '500', src: 'assets/icons/calendar2.svg' },
 ];
 
-export const Menu: React.FC = () => {
+export const SidebarMenu: React.FC = () => {
 
   const [selected, setSelected] = useState('200');
 
@@ -71,7 +73,10 @@ export const Menu: React.FC = () => {
             key={el.id}
             src={el.src}
             onClick={() => setSelected(el.id)}
-            selected={selected === el.id}
+            {...(
+              selected === el.id
+                ? { styles: css`background-color: ${theme.colors.primary};` }
+                : {})}
           />
         ))}
       </IconsContainer>

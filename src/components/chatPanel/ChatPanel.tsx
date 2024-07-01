@@ -2,6 +2,9 @@
 import React, { ReactNode, useState } from 'react';
 import { chatPanelStyles, chatInputStyles, chatButtonStyles } from './chatPanel.styles';
 import MessageList from '../messageList/MessageList';
+import { MessagesPanel } from '../messagesPanel/MessagesPanel';
+import { Separator } from 'ui/separator';
+import { css } from '@emotion/react';
 
 interface ChatPanelProps {
   children: ReactNode;
@@ -25,8 +28,10 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ children }) => {
   };
 
   return (
-    <div css={chatPanelStyles}>
-      <MessageList messages={messages} />
+    <>
+      <MessagesPanel />
+      <Separator vertical />
+      {/* <MessageList messages={messages} />
       <div css={chatInputStyles}>
         <input
           type="text"
@@ -35,8 +40,8 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ children }) => {
           placeholder="Введите сообщение..."
         />
         <button css={chatButtonStyles} onClick={handleSendMessage}>Отправить</button>
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 };
 

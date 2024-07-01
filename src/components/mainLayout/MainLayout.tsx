@@ -1,13 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode } from 'react';
-import { css } from '@emotion/react';
-import Sidebar from '../sidebar/Sidebar';
-import DirectoryPanel from '../directoryPanel/DirectoryPanel';
+import { Sidebar } from '../sidebar/Sidebar';
+import styled from '@emotion/styled';
+import theme from 'styles/theme';
+import { Separator } from 'ui/separator';
 
-export const layoutWrapper = css`
+const LayoutWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
+  background: ${theme.colors.background};
 `;
 
 interface MainLayoutProps {
@@ -16,11 +18,11 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div css={layoutWrapper}>
+    <LayoutWrapper>
       <Sidebar />
-
-      {/* <DirectoryPanel /> */}
-    </div>
+      <Separator vertical />
+      {children}
+    </LayoutWrapper>
   );
 };
 
