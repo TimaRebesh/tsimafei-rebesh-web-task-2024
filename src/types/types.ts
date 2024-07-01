@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   id: number;
   name: string;
   avatar: string;
@@ -16,12 +16,12 @@ export interface LastMessage {
 
 export interface MessageData {
   id: number;
-  user: User;
+  user: IUser;
   lastMessage: LastMessage;
   labels: Label[];
 }
 
-export interface Message {
+export interface Comment {
   name: string;
   text: string;
   id: string;

@@ -1,44 +1,44 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import {
-  fetchMessagesSuccess,
-  sendMessageSuccess,
+  fetchCommentsSuccess,
+  sendCommentSuccess,
 } from '../reducers/chatReducer';
-import { FETCH_MESSAGES, SEND_MESSAGE } from '../constants';
-import { Message } from '@/types/types';
+import { FETCH_COMMENTS, SEND_COMMENT } from '../constants';
+import { Comment } from '@/types/types';
 
 interface FetchMessagesAction {
-  type: typeof FETCH_MESSAGES;
+  type: typeof FETCH_COMMENTS;
 }
 
 interface SendMessageAction {
-  type: typeof SEND_MESSAGE;
+  type: typeof SEND_COMMENT;
   payload: string;
 }
 
-function* fetchMessages(): Generator<any, void, { data: Message[] }> {
+function* fetchComments(): Generator<any, void, { data: Comment[] }> {
   try {
     const response = yield call(axios.get, 'http://localhost:3001/comments');
-    yield put(fetchMessagesSuccess(response.data));
+    yield put(fetchCommentsSuccess(response.data));
   } catch (e) {
     console.error(e);
   }
 }
 
-function* sendMessage(
+function* sendComment(
   action: SendMessageAction
-): Generator<any, void, { data: Message }> {
+): Generator<any, void, { data: Comment }> {
   try {
     const response = yield call(axios.post, 'http://localhost:3001/comments', {
       text: action.payload,
     });
-    yield put(sendMessageSuccess(response.data));
+    yield put(sendCommentSuccess(response.data));
   } catch (e) {
     console.error(e);
   }
 }
 
 export function* chatSaga() {
-  yield takeEvery(FETCH_MESSAGES, fetchMessages);
-  yield takeEvery(SEND_MESSAGE, sendMessage);
+  yield takeEvery(FETCH_COMMENTS, fetchComments);
+  yield takeEvery(SEND_COMMENT, sendComment);
 }

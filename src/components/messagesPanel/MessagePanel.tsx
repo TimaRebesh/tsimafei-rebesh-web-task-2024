@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { css } from '@emotion/react';
-import messagePanelStyles from './messagesPanel.styles';
+
 import Header from './header/Header';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';

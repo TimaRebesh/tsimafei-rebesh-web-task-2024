@@ -1,14 +1,17 @@
+import { IUser } from 'types/types';
+import { Avatar } from 'ui/avatar';
 import styled from '@emotion/styled';
 
-const PanelHeaderContainer = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  width: 640px;
+  width: 100%;
   height: 80px;
 `;
+
 
 const UserContent = styled.div`
   display: flex;
@@ -16,15 +19,8 @@ const UserContent = styled.div`
   align-items: flex-start;
   padding: 0;
   gap: 16px;
-  width: 240px;
+  width: 100%;
   height: 43px;
-`;
-
-const UserAvatar = styled.div`
-  width: 40px;
-  height: 40px;
-  background: url(.png);
-  border-radius: 10px;
 `;
 
 const UserInfo = styled.div`
@@ -32,12 +28,12 @@ const UserInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0;
-  width: 184px;
+  width: 100%;
   height: 43px;
 `;
 
 const UserName = styled.div`
-  width: 184px;
+  width: 100%;
   height: 25px;
   font-family: 'Inter';
   font-weight: 600;
@@ -59,6 +55,7 @@ const StatusIndicator = styled.div`
   width: 10px;
   height: 10px;
   background: #68d391;
+  border-radius: 50%;
 `;
 
 const StatusText = styled.div`
@@ -81,12 +78,14 @@ const CallButton = styled.div`
   height: 44px;
   background: rgba(97, 94, 240, 0.1);
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 const CallIcon = styled.div`
   width: 24px;
   height: 24px;
   background: #615ef0;
+  mask-image: url(assets/icons/call.svg);
 `;
 
 const CallText = styled.div`
@@ -98,23 +97,26 @@ const CallText = styled.div`
   color: #615ef0;
 `;
 
-export const ConversationHeader = () => {
+export const ConversationHeader = ({ user }: { user: IUser; }) => {
+
+  const onCall = () => { console.log('calling'); };
+
   return (
-    <PanelHeaderContainer>
+    <HeaderContainer>
       <UserContent>
-        <UserAvatar />
+        <Avatar src={user.avatar} />
         <UserInfo>
-          <UserName>Florencio Dorrance</UserName>
-          <UserStatus>
+          <UserName>{user.name}</UserName>
+          <UserStatus >
             <StatusIndicator />
             <StatusText>Online</StatusText>
           </UserStatus>
         </UserInfo>
       </UserContent>
-      <CallButton>
+      <CallButton onClick={onCall}>
         <CallIcon />
         <CallText>Call</CallText>
       </CallButton>
-    </PanelHeaderContainer>
+    </HeaderContainer >
   );
 };

@@ -1,5 +1,3 @@
-// src/data/messagesData.ts
-
 import { MessageData } from 'types/types';
 
 export const messagesData: MessageData[] = [

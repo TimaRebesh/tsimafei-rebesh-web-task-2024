@@ -1,13 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import React, { ReactNode, useEffect, useState } from 'react';
-import { chatPanelStyles, chatInputStyles, chatButtonStyles } from './chatPanel.styles';
 import { MessagesPanel } from '../messagesPanel/MessagePanel';
 import { Divider } from 'ui/divider';
-import { css } from '@emotion/react';
 import { ConversationPanel } from '../conversationPanel/ConversationPanel';
-import { Message } from 'types/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMessages } from 'store/actions/chatActions';
+import { useSelector } from 'react-redux';
 import { RootState } from 'store/reducers/rootReducer';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';
@@ -20,22 +15,14 @@ width: 100%;
 
 const ChatPanel: React.FC = () => {
 
-  const dispatch = useDispatch();
-  const messages = useSelector((state: RootState) => state.chat.messages);
   const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);
-  console.log(selectedMessage);
-
-  useEffect(() => {
-    dispatch(fetchMessages());
-  }, [dispatch]);
-
 
   return (
     <>
       <MessagesPanel />
       <Divider vertical />
       {selectedMessage
-        ? <ConversationPanel messages={messages} />
+        ? <ConversationPanel message={selectedMessage} />
         : <NoneConversation />
       }
       <Divider vertical />

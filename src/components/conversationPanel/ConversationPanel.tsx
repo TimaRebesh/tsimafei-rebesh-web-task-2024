@@ -1,46 +1,21 @@
-import { Message } from "types/types";
+import { Comment, MessageData } from "types/types";
 import styled from '@emotion/styled';
 import { ConversationHeader } from './ConversationHeader';
-
-export interface ConversationProps {
-  messages: Message[];
-}
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchComments } from 'store/actions/chatActions';
+import { Divider } from "ui/divider";
+import { RootState } from "store/reducers/rootReducer";
+import { Preloader } from "ui/preloader";
+import theme from "styles/theme";
+import { ConversationView } from "./ConversationView";
 
 const PanelContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
-  padding: 0;
-  width: 640px;
-  height: 1024px;
-  background: #ffffff;
-`;
-
-const TopContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-  width: 640px;
-  height: 774px;
-`;
-
-const Divider = styled.div`
-  width: 640px;
-  height: 1px;
-  background: #000000;
-  opacity: 0.08;
-`;
-
-const MessageList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px;
-  gap: 32px;
-  width: 640px;
-  height: 693px;
+  width: 100%;
+  height: 100%;
 `;
 
 const MessageItem = styled.div`
@@ -67,7 +42,7 @@ const MessageBox = styled.div`
   align-items: center;
   padding: 24px;
   gap: 24px;
-  width: 640px;
+  width: 100%;
   height: 96px;
 `;
 
@@ -79,7 +54,7 @@ const MessageInput = styled.input`
   align-items: center;
   padding: 10px 20px;
   gap: 10px;
-  width: 544px;
+  width: 100%;
   height: 48px;
   background: #ffffff;
   border: 2px solid #e2e8f0;
@@ -100,20 +75,27 @@ const SendMessageButton = styled.button`
   cursor: pointer;
 `;
 
-export const ConversationPanel: React.FC<ConversationProps> = ({ messages }) => {
+
+
+
+export interface ConversationProps {
+  message: MessageData;
+}
+
+export const ConversationPanel: React.FC<ConversationProps> = ({ message }) => {
+
+  const dispatch = useDispatch();
+  const comments = useSelector((state: RootState) => state.chat.comments);
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, [dispatch]);
+
   return (
     <PanelContainer>
-      <TopContent>
-        <ConversationHeader />
-        <Divider />
-        <MessageList>
-          {messages.map((message) => (
-            <MessageItem key={message.id}>
-              <MessageText>{message.text}</MessageText>
-            </MessageItem>
-          ))}
-        </MessageList>
-      </TopContent>
+      <ConversationHeader user={message.user} />
+      <Divider />
+      <ConversationView comments={comments} />
       <MessageBox>
         <MessageInput placeholder="Type a message" />
         <SendMessageButton />
@@ -121,3 +103,4 @@ export const ConversationPanel: React.FC<ConversationProps> = ({ messages }) => 
     </PanelContainer>
   );
 };
+

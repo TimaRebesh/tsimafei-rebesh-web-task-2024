@@ -1,26 +1,26 @@
-import { Message } from 'types/types';
+import { Comment } from 'types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ChatState {
-  messages: Message[];
+  comments: Comment[] | null;
 }
 
 const initialState: ChatState = {
-  messages: [],
+  comments: null,
 };
 
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    fetchMessagesSuccess(state, action: PayloadAction<Message[]>) {
-      state.messages = action.payload;
+    fetchCommentsSuccess(state, action: PayloadAction<Comment[]>) {
+      state.comments = action.payload;
     },
-    sendMessageSuccess(state, action: PayloadAction<Message>) {
-      state.messages.push(action.payload);
+    sendCommentSuccess(state, action: PayloadAction<Comment>) {
+      state.comments?.push(action.payload);
     },
   },
 });
 
-export const { fetchMessagesSuccess, sendMessageSuccess } = chatSlice.actions;
+export const { fetchCommentsSuccess, sendCommentSuccess } = chatSlice.actions;
 export default chatSlice.reducer;

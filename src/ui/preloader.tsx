@@ -1,5 +1,8 @@
 export const Preloader = () =>
-(
-  <div>Loading...</div>
-)
+  <img
+    src='assets/gifs/loader.gif'
+    height={10}
+    alt='loading'
+  />
+
 

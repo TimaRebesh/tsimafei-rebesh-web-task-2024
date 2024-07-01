@@ -6,7 +6,7 @@ import theme from 'styles/theme';
 import { useDispatch } from 'react-redux';
 import { selectMessage } from 'store/actions/messagesActions';
 
-const MessageContainer = styled.div`
+const MessageContainer = styled.div<{ isActive: boolean; }>`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -14,6 +14,8 @@ const MessageContainer = styled.div`
   padding: 12px;
   gap: 16px;
   border-radius: 12px;
+  cursor: pointer;
+  background: ${({ isActive }) => isActive ? theme.colors.selected : 'inherit'};
   &:hover {
     background: ${theme.colors.selected}
   }
@@ -66,9 +68,10 @@ const LabelsContainer = styled.div`
 
 interface MessageProps {
   message: MessageData;
+  isActive: boolean;
 }
 
-export const Message: React.FC<MessageProps> = ({ message }) => {
+export const Message: React.FC<MessageProps> = ({ message, isActive }) => {
 
   const dispatch = useDispatch();
 
@@ -77,7 +80,7 @@ export const Message: React.FC<MessageProps> = ({ message }) => {
   };
 
   return (
-    <MessageContainer onClick={onClick}>
+    <MessageContainer isActive={isActive} onClick={onClick}>
       <Avatar src={message.user.avatar} />
       <MessageContent>
         <NameContainer>

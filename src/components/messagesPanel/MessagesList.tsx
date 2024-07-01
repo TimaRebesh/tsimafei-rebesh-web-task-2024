@@ -3,6 +3,8 @@ import { MessagesSearch } from './MessagesSearch';
 import { Message } from './Message';
 import { messagesData } from '../../utils/mockData';
 import { Preloader } from 'ui/preloader';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/reducers/rootReducer';
 
 const Container = styled.div`
 display: flex;
@@ -24,6 +26,7 @@ width: 100%;
 export const MessageList = () => {
 
   const data = messagesData;
+  const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);
 
   if (!data)
     return <Preloader />;
@@ -33,7 +36,11 @@ export const MessageList = () => {
       <MessagesSearch />
       <MessageListComponent>
         {data.map((message) => (
-          <Message key={message.user.id} message={message} />
+          <Message
+            key={message.id}
+            message={message}
+            isActive={selectedMessage && message.id === selectedMessage.id}
+          />
         ))}
       </MessageListComponent>
     </Container>
