@@ -1,21 +1,13 @@
 import { Icon } from 'ui/Icon';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';
-import { css } from '@emotion/react';
 
 const Header = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-padding: 0px;
-
 width: 100%;
 height: 89px;
-
-flex: none;
-order: 0;
-flex-grow: 0;
-
 `;
 
 const Content = styled.div`
@@ -25,49 +17,67 @@ justify-content: space-between;
 align-items: center;
 padding: 24px;
 gap: 10px;
-
 width: 100%;
 height: 88px;
-
-flex: none;
-order: 0;
-flex-grow: 0;
 `;
 
-const Frame1 = styled.div`
+const Control = styled.div`
+display: flex;
+align-items: center;
+gap: 10px;
+height: 30px;
+`;
+
+const MessagesSwitcher = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 0px;
-gap: 10px;
-
-margin: 0 auto;
-width: 161px;
+gap: 6px;
+width: 121px;
 height: 30px;
-
-
-flex: none;
-order: 0;
-flex-grow: 0;
 `;
 
-const Icon2 = styled.div`
-margin: 0 auto;
-width: 40px;
-height: 40px;
-flex: none;
-order: 1;
-flex-grow: 0;
+const MessagesSwitcherText = styled.div`
+width: 99px;
+height: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 150%;
 `;
 
-
+const MessagesIndicator = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 2px 8px;
+gap: 10px;
+width: 30px;
+height: 22px;
+background: #EDF2F7;
+border-radius: 24px;
+  span {
+    width: 14px;
+    height: 18px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 150%;
+  }
+`;
 
 
 export const MessagesHeader = () => {
   return (
     <Header>
       <Content>
-        <Frame1></Frame1>
+        <Control>
+          <MessagesSwitcher >
+            <MessagesSwitcherText>Messages</MessagesSwitcherText>
+            <Icon src='assets/icons/arrowdown2.svg' width={16} height={16} />
+          </MessagesSwitcher>
+          <MessagesIndicator><span>12</span></MessagesIndicator>
+        </Control>
         <Icon
           src='assets/icons/addcircle.svg'
           width={40}
