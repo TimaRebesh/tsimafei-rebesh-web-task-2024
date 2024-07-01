@@ -4,31 +4,33 @@ import { chatPanelStyles, chatInputStyles, chatButtonStyles } from './chatPanel.
 import { MessagesPanel } from '../messagesPanel/MessagePanel';
 import { Divider } from 'ui/divider';
 import { css } from '@emotion/react';
+import { ConversationPanel } from '../conversationPanel/ConversationPanel';
+import { Message } from '@/types/types';
 
 interface ChatPanelProps {
 
 }
 
-interface Message {
-  id: number;
-  text: string;
-}
+
+const messages: Message[] = [
+  {
+    name: 'Tim',
+    text: 'Hello',
+    id: 'b40ce360-1af4-4df0-8b2d-d29b0865f15e',
+    dateAdded: 1573961291493,
+    dateEdited: 1574224441310,
+  },
+  // Add other messages here...
+];
 
 const ChatPanel: React.FC<ChatPanelProps> = () => {
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>([]);
 
-  const handleSendMessage = () => {
-    if (message.trim()) {
-      const newMessage = { id: Date.now(), text: message };
-      setMessages([...messages, newMessage]);
-      setMessage('');
-    }
-  };
 
   return (
     <>
       <MessagesPanel />
+      <Divider vertical />
+      <ConversationPanel messages={messages} />
       <Divider vertical />
       {/* <MessageList messages={messages} />
       <div css={chatInputStyles}>

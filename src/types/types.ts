@@ -16,12 +16,10 @@ export interface MessageData {
   labels: Label[];
 }
 
-export interface MessagesProps {
-  messages: MessageData[];
-}
-
 export interface Message {
-  id: number;
+  name: string;
   text: string;
-  timestamp: string;
+  id: string;
+  dateAdded: number;
+  dateEdited: number;
 }
