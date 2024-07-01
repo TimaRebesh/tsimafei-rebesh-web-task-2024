@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { Sidebar } from '../sidebar/Sidebar';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';
-import { Separator } from 'ui/separator';
+import { Divider } from 'ui/divider';
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <LayoutWrapper>
       <Sidebar />
-      <Separator vertical />
+      <Divider vertical />
       {children}
     </LayoutWrapper>
   );

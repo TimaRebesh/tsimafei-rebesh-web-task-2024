@@ -5,7 +5,7 @@ import messagePanelStyles from './messagesPanel.styles';
 import Header from './header/Header';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';
-import { Separator } from 'ui/separator';
+import { Divider } from 'ui/divider';
 import { MessagesHeader } from './MessagesHeader';
 
 const MessagePanelEl = styled.div`
@@ -24,7 +24,7 @@ export const MessagesPanel: React.FC = () => {
   return (
     <MessagePanelEl>
       <MessagesHeader />
-      <Separator />
+      <Divider />
       <div css={css`height: 10px`}>пудд</div>
     </MessagePanelEl>
   );

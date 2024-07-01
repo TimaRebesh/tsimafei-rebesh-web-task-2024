@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from 'react';
 import { chatPanelStyles, chatInputStyles, chatButtonStyles } from './chatPanel.styles';
 import MessageList from '../messageList/MessageList';
 import { MessagesPanel } from '../messagesPanel/MessagesPanel';
-import { Separator } from 'ui/separator';
+import { Divider } from 'ui/divider';
 import { css } from '@emotion/react';
 
 interface ChatPanelProps {
@@ -30,7 +30,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ children }) => {
   return (
     <>
       <MessagesPanel />
-      <Separator vertical />
+      <Divider vertical />
       {/* <MessageList messages={messages} />
       <div css={chatInputStyles}>
         <input
