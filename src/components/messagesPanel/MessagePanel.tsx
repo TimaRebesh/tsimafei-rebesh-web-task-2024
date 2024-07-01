@@ -7,26 +7,23 @@ import styled from '@emotion/styled';
 import theme from 'styles/theme';
 import { Divider } from 'ui/divider';
 import { MessagesHeader } from './MessagesHeader';
+import { MessageList } from './MessagesList';
 
-const MessagePanelEl = styled.div`
+const MessagePanelContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0px;
-
-
   width: 349px;
   height: 100%;
-  
-  `;
+`;
 
 export const MessagesPanel: React.FC = () => {
   return (
-    <MessagePanelEl>
+    <MessagePanelContainer>
       <MessagesHeader />
       <Divider />
-      <div css={css`height: 10px`}>пудд</div>
-    </MessagePanelEl>
+      <MessageList />
+    </MessagePanelContainer>
   );
 }
   ;
+

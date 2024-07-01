@@ -14,6 +14,10 @@ const globalStyles = css`
     font-family: ${theme.fonts.primary};
     background-color: ${theme.colors.background};
     color: ${theme.colors.textPrimary};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
   }
 `;
 

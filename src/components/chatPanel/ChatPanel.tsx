@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode, useState } from 'react';
 import { chatPanelStyles, chatInputStyles, chatButtonStyles } from './chatPanel.styles';
-import MessageList from '../messageList/MessageList';
-import { MessagesPanel } from '../messagesPanel/MessagesPanel';
+import { MessagesPanel } from '../messagesPanel/MessagePanel';
 import { Divider } from 'ui/divider';
 import { css } from '@emotion/react';
 
 interface ChatPanelProps {
-  children: ReactNode;
+
 }
 
 interface Message {
@@ -15,7 +14,7 @@ interface Message {
   text: string;
 }
 
-const ChatPanel: React.FC<ChatPanelProps> = ({ children }) => {
+const ChatPanel: React.FC<ChatPanelProps> = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
 
