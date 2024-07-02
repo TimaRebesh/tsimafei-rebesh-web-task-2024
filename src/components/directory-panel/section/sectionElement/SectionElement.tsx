@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from "react";
 import { Avatar } from "ui/avatar";
 import styled from "@emotion/styled";
 import { ISectionElement } from "types/types";
@@ -39,19 +40,22 @@ const Description = styled.div`
 
 const CustomIconWrapper = styled.div`
   border-radius: 12px;
- `;
+`;
 
-export const SectionElement = ({ element, downloadIcon }: { element: ISectionElement; downloadIcon?: boolean; }) => (
+interface SectionElementProps {
+  element: ISectionElement;
+  downloadIcon?: boolean;
+}
+
+export const SectionElement: React.FC<SectionElementProps> = ({ element, downloadIcon }) => (
   <ElementContainer>
-    {element.iconStyles
-      ?
+    {element.iconStyles ? (
       <CustomIconWrapper style={element.iconStyles.container}>
         <Icon src={element.src} styles={css`${element.iconStyles.img}`} />
       </CustomIconWrapper>
-      :
+    ) : (
       <Avatar src={element.src} />
-    }
-
+    )}
     <ElementDetailsContainer>
       <DetailsInfo>
         <h4>{element.name}</h4>
@@ -61,4 +65,3 @@ export const SectionElement = ({ element, downloadIcon }: { element: ISectionEle
     </ElementDetailsContainer>
   </ElementContainer>
 );
-

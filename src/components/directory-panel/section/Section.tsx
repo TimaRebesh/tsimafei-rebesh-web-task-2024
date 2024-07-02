@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { SectionTitle } from './SectionTitle';
-import { SectionElement } from './SectionElement';
+import { SectionElement } from './sectionElement/SectionElement';
 import { ISectionElement } from 'types/types';
 
 const SectionContainer = styled.div`
