@@ -10,24 +10,6 @@ export const currentUser: IUser = {
 
 export const messagesData: MessageData[] = [
   {
-    id: 100,
-    user: {
-      id: 1,
-      name: 'Tim',
-      avatar:
-        'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      position: 'Area Sales Manager',
-    },
-    lastMessage: {
-      date: 1573961291493,
-      text: 'Haha oh man',
-    },
-    labels: [
-      { type: 'question', text: 'Question' },
-      { type: 'help', text: 'Help wanted' },
-    ],
-  },
-  {
     id: 200,
     user: {
       id: 2,
@@ -37,7 +19,7 @@ export const messagesData: MessageData[] = [
       position: 'Administrator',
     },
     lastMessage: {
-      date: 1573962291493,
+      date: 1719942879800,
       text: 'woohoooo',
     },
     labels: [{ type: 'default', text: 'Some content' }],
@@ -52,7 +34,7 @@ export const messagesData: MessageData[] = [
       position: 'Account Executive',
     },
     lastMessage: {
-      date: 1573963291493,
+      date: 1719956815790,
       text: "Haha that's terrifying",
     },
     labels: [
@@ -70,7 +52,7 @@ export const messagesData: MessageData[] = [
       position: 'Proposal Writer',
     },
     lastMessage: {
-      date: 1573964291493,
+      date: 1719784534584,
       text: 'omg, this is amazing',
     },
     labels: [
@@ -89,7 +71,7 @@ export const messagesData: MessageData[] = [
       position: 'Nursing Assistant',
     },
     lastMessage: {
-      date: 1573965291493,
+      date: 1719784534584,
       text: 'aww',
     },
     labels: [{ type: 'question', text: 'Request' }],

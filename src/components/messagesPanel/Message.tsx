@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { MessageData } from 'types/types';
 import { CustomLabel } from 'ui/label';
 import theme from 'styles/theme';
+import { getTransformedData } from 'utils/utils';
 
 const MessageContainer = styled.div<{ isActive: boolean; }>`
   display: flex;
@@ -22,7 +23,6 @@ const MessageContainer = styled.div<{ isActive: boolean; }>`
 const MessageContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
   width: 100%;
 `;
 
@@ -31,19 +31,11 @@ const NameContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  font-family: 'Inter';
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 150%;
-  color: #000;
 `;
 
 const Time = styled.span`
-  font-family: 'Inter';
   font-weight: 600;
   font-size: 14px;
-  line-height: 150%;
-  color: #000;
   opacity: 0.3;
 `;
 
@@ -60,6 +52,7 @@ const LabelsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  margin-top: 10px;
   gap: 8px;
   height: 22px;
 `;
@@ -79,8 +72,8 @@ export const Message: React.FC<MessageProps> = ({ message, isActive, select }) =
       <Avatar src={message.user.avatar} />
       <MessageContent>
         <NameContainer>
-          <span>{message.user.name}</span>
-          <Time>{message.lastMessage.date}</Time>
+          <h4>{message.user.name}</h4>
+          <Time>{getTransformedData(message.lastMessage.date)}</Time>
         </NameContainer>
         <MessageText>{message.lastMessage.text}</MessageText>
         <LabelsContainer>

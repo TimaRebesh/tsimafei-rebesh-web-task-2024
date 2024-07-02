@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import { MessagesSearch } from './MessagesSearch';
 import { Message } from './Message';
-import { messagesData } from '../../utils/mockData';
-import { Preloader } from 'ui/preloader';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/reducers/rootReducer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { selectMessage } from 'store/actions/messagesActions';
 import { MessageData } from 'types/types';
+import { getMessagesData } from 'utils/utils';
 
 const Container = styled.div`
 display: flex;
@@ -28,7 +27,7 @@ width: 100%;
 
 export const MessageList = () => {
 
-  const data = messagesData;
+  const [updatedData, setUpdatedData] = useState<MessageData[] | null>(null);
   const dispatch = useDispatch();
   const comments = useSelector((state: RootState) => state.chat.comments);
   const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);
@@ -38,17 +37,21 @@ export const MessageList = () => {
   };
 
   useEffect(() => {
-    select(data[0]);
-  }, [comments, data]);
+    if (comments) {
+      const data = getMessagesData(comments);
+      select(data[0]);
+      setUpdatedData(data);
+    }
+  }, [comments]);
 
-  if (!data)
-    return <Preloader />;
+  if (!updatedData)
+    return null;
 
   return (
     <Container>
       <MessagesSearch />
       <MessageListComponent>
-        {data.map((message) => (
+        {updatedData.map((message) => (
           <Message
             key={message.id}
             message={message}
