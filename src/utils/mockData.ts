@@ -10,6 +10,21 @@ export const currentUser: IUser = {
 
 export const messagesData: MessageData[] = [
   {
+    id: 100,
+    user: {
+      id: 1,
+      name: 'Tim',
+      avatar:
+        'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      position: 'Area Sales Manager',
+    },
+    lastMessage: {
+      date: 1573961291493,
+      text: 'Haha oh man',
+    },
+    labels: [],
+  },
+  {
     id: 200,
     user: {
       id: 2,

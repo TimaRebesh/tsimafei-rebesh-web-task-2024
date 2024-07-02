@@ -65,21 +65,8 @@ export const getTransformedData = (milliseconds: number): string => {
 
 export const getMessagesData = (comments: Comment[]): MessageData[] => {
   const data = messagesData;
-  const activeUser = {
-    id: 100,
-    user: {
-      id: 1,
-      name: 'Tim',
-      avatar:
-        'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      position: 'Area Sales Manager',
-    },
-    lastMessage: {
-      date: comments[comments.length - 1].dateEdited,
-      text: comments[comments.length - 1].text,
-    },
-    labels: [],
-  };
-  const dataWithActiveUser = [activeUser, ...data];
+  data[0].lastMessage.date = comments[comments.length - 1].dateEdited;
+  data[0].lastMessage.text = comments[comments.length - 1].text;
+  const dataWithActiveUser = JSON.parse(JSON.stringify(data));
   return dataWithActiveUser;
 };
