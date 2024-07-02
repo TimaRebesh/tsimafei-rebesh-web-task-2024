@@ -10,6 +10,7 @@ import { RootState } from 'store/reducers/rootReducer';
 import { deleteCommentRequest } from 'store/actions/chatActions';
 import styled from '@emotion/styled';
 import { PreloaderCircle } from 'ui/preloader-circle';
+import { setEditingComment } from 'store/reducers/chatReducer';
 
 const ControlContainer = styled.div`
   position: relative;
@@ -51,6 +52,11 @@ export const Control: React.FC<ControlProps> = ({
     setShowPopup(null);
   };
 
+  const handleEdit = () => {
+    dispatch(setEditingComment(message));
+    setShowPopup(null);
+  };
+
   return (
     <ControlContainer>
       {isPending ? (
@@ -73,7 +79,7 @@ export const Control: React.FC<ControlProps> = ({
       )}
       {showPopup === message.id && (
         <Popup onClose={() => setShowPopup(null)}>
-          <PopupItem>Edit</PopupItem>
+          <PopupItem onClick={handleEdit}>Edit</PopupItem>
           <PopupItem onClick={handleDelete}>Delete</PopupItem>
         </Popup>
       )}

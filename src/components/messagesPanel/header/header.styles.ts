@@ -1,3 +1,4 @@
+import theme from 'styles/theme';
 import { css } from '@emotion/react';
 
 const headerStyles = {
@@ -38,7 +39,7 @@ const headerStyles = {
   statusDot: css`
     width: 10px;
     height: 10px;
-    background: #68d391;
+    background: ${theme.colors.success};
     border-radius: 50%;
   `,
   callButton: css`

@@ -5,6 +5,8 @@ import { TransformedComments } from 'types/types';
 import { Avatar } from 'ui/avatar';
 import theme from 'styles/theme';
 import { Control } from './Control';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/reducers/rootReducer';
 
 const MessageContainer = styled.div`
   display: flex;
@@ -21,9 +23,11 @@ const SingleMessage = styled.div<{ isRight: boolean; }>`
   position: relative;
 `;
 
-const MessageContent = styled.div<{ isOwner: boolean; }>`
-display: flex;
-  background: ${props => (props.isOwner ? theme.colors.primary : '#f1f1f1')};
+const MessageContent = styled.div<{ isOwner: boolean; isEdited: boolean; }>`
+  display: flex;
+  background: ${props =>
+    props.isEdited ? theme.colors.success :
+      props.isOwner ? theme.colors.primary : '#f1f1f1'};
   border-radius: 12px;
   padding: 8px 16px;
   position: relative;
@@ -53,28 +57,33 @@ export const Message = ({
 }) => {
   const { isOwner, avatar, comments } = messageBlock;
   const [showPopup, setShowPopup] = useState<string | null>(null);
+  const editedComment = useSelector((state: RootState) => state.chat.editingComment);
 
   return (
     <MessageContainer>
-      {comments.map((message, index) => (
-        <SingleMessage key={message.id} isRight={isOwner}>
-          <AvatarWrapper isRight={isOwner}>
-            {!isOwner && index === 0 && <Avatar src={avatar} />}
-          </AvatarWrapper>
-          <MessageContent isOwner={isOwner}>
-            <p>{message.text}</p>
-            <Control
-              message={message}
-              isOwner={isOwner}
-              showPopup={showPopup}
-              setShowPopup={setShowPopup}
-            />
-          </MessageContent>
-          <AvatarWrapper isRight={isOwner}>
-            {isOwner && index === 0 && <Avatar src={avatar} />}
-          </AvatarWrapper>
-        </SingleMessage>
-      ))}
+      {comments.map((message, index) => {
+        const isEdited = editedComment?.id === message.id;
+        return (
+          <SingleMessage key={message.id} isRight={isOwner}>
+            <AvatarWrapper isRight={isOwner}>
+              {!isOwner && index === 0 && <Avatar src={avatar} />}
+            </AvatarWrapper>
+            <MessageContent isOwner={isOwner} isEdited={editedComment?.id === message.id}>
+              <p>{message.text}</p>
+              {(isOwner && !isEdited) && <Control
+                message={message}
+                isOwner={isOwner}
+                showPopup={showPopup}
+                setShowPopup={setShowPopup}
+              />}
+            </MessageContent>
+            <AvatarWrapper isRight={isOwner}>
+              {isOwner && index === 0 && <Avatar src={avatar} />}
+            </AvatarWrapper>
+          </SingleMessage>
+        );
+      }
+      )}
     </MessageContainer>
   );
 };

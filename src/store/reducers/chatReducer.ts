@@ -1,4 +1,3 @@
-// chatReducer.js
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Comment } from 'types/types';
 
@@ -6,12 +5,14 @@ interface ChatState {
   comments: Comment[] | null;
   pendingDeleteComments: string[];
   error: string | null;
+  editingComment: Comment | null;
 }
 
 const initialState: ChatState = {
   comments: null,
   pendingDeleteComments: [],
   error: null,
+  editingComment: null,
 };
 
 const chatSlice = createSlice({
@@ -24,7 +25,7 @@ const chatSlice = createSlice({
     sendCommentSuccess(state, action: PayloadAction<Comment>) {
       state.comments?.push(action.payload);
     },
-    deleteCommentRequest(state, action: PayloadAction<string>) {
+    setDeletingComment(state, action: PayloadAction<string>) {
       state.pendingDeleteComments.push(action.payload);
     },
     deleteCommentSuccess(state, action: PayloadAction<string>) {
@@ -41,14 +42,35 @@ const chatSlice = createSlice({
       );
       state.error = action.payload;
     },
+    editCommentRequest(state, action: PayloadAction<Comment>) {
+      state.editingComment = action.payload;
+    },
+    editCommentSuccess(state, action: PayloadAction<Comment>) {
+      state.comments =
+        state.comments?.map((comment) =>
+          comment.id === action.payload.id ? action.payload : comment
+        ) || null;
+      state.editingComment = null;
+    },
+    editCommentFailure(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+      state.editingComment = null;
+    },
+    setEditingComment(state, action: PayloadAction<Comment | null>) {
+      state.editingComment = action.payload;
+    },
   },
 });
 
 export const {
   fetchCommentsSuccess,
   sendCommentSuccess,
-  deleteCommentRequest,
+  setDeletingComment,
   deleteCommentSuccess,
   deleteCommentFailure,
+  editCommentRequest,
+  editCommentSuccess,
+  editCommentFailure,
+  setEditingComment,
 } = chatSlice.actions;
 export default chatSlice.reducer;

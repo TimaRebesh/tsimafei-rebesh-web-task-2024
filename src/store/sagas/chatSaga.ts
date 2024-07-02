@@ -5,12 +5,15 @@ import {
   sendCommentSuccess,
   deleteCommentSuccess,
   deleteCommentFailure,
-  deleteCommentRequest,
+  editCommentSuccess,
+  editCommentFailure,
+  setDeletingComment,
 } from '../reducers/chatReducer';
 import {
   FETCH_COMMENTS,
   SEND_COMMENT,
   DELETE_COMMENT_REQUEST,
+  EDIT_COMMENT_REQUEST,
 } from '../constants';
 import { Comment } from 'types/types';
 
@@ -26,6 +29,11 @@ interface SendMessageAction {
 interface DeleteCommentAction {
   type: typeof DELETE_COMMENT_REQUEST;
   payload: string;
+}
+
+interface EditCommentAction {
+  type: typeof EDIT_COMMENT_REQUEST;
+  payload: Comment;
 }
 
 function* fetchComments(): Generator<any, void, { data: Comment[] }> {
@@ -54,7 +62,7 @@ function* sendComment(
 function* deleteComment(
   action: DeleteCommentAction
 ): Generator<any, void, { data: boolean }> {
-  yield put(deleteCommentRequest(action.payload));
+  yield put(setDeletingComment(action.payload));
   try {
     const response = yield call(
       axios.delete,
@@ -70,8 +78,24 @@ function* deleteComment(
   }
 }
 
+function* editComment(
+  action: EditCommentAction
+): Generator<any, void, { data: Comment }> {
+  try {
+    const response = yield call(
+      axios.put,
+      `http://localhost:3001/comment/${action.payload.id}`,
+      action.payload
+    );
+    yield put(editCommentSuccess(response.data));
+  } catch (e: any) {
+    yield put(editCommentFailure(e.message));
+  }
+}
+
 export function* chatSaga() {
   yield takeEvery(FETCH_COMMENTS, fetchComments);
   yield takeEvery(SEND_COMMENT, sendComment);
   yield takeEvery(DELETE_COMMENT_REQUEST, deleteComment);
+  yield takeEvery(EDIT_COMMENT_REQUEST, editComment);
 }

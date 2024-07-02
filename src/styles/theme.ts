@@ -6,6 +6,7 @@ const theme = {
     textPrimary: '#000000',
     textSecondary: '#718096',
     selected: '#615ef00f',
+    success: '#68d391',
   },
   fonts: {
     primary: "'Inter', sans-serif",

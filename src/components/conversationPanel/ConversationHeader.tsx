@@ -56,7 +56,7 @@ const UserStatus = styled.div`
 const StatusIndicator = styled.div`
   width: 10px;
   height: 10px;
-  background: #68d391;
+  background: ${theme.colors.success};
   border-radius: 50%;
 `;
 
