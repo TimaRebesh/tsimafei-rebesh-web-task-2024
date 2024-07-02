@@ -44,8 +44,6 @@ const SearchLabel = styled.div`
   opacity: 0.4;
 `;
 
-
-
 export const MessagesSearch: React.FC = () => {
   return (
     <Block>

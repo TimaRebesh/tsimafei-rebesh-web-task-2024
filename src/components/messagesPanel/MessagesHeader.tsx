@@ -55,7 +55,7 @@ const MessagesIndicator = styled.div`
   gap: 10px;
   width: 30px;
   height: 22px;
-    background: ${theme.colors.backgroundSecondary};
+  background: ${theme.colors.backgroundSecondary};
   border-radius: 24px;
     span {
       width: 14px;
@@ -66,7 +66,6 @@ const MessagesIndicator = styled.div`
     }
 `;
 
-
 export const MessagesHeader = () => {
   return (
     <Header>
@@ -76,7 +75,9 @@ export const MessagesHeader = () => {
             <MessagesSwitcherText>Messages</MessagesSwitcherText>
             <Icon src='assets/icons/arrowdown2.svg' width={16} height={16} />
           </MessagesSwitcher>
-          <MessagesIndicator><span>12</span></MessagesIndicator>
+          <MessagesIndicator>
+            <span>12</span>
+          </MessagesIndicator>
         </Control>
         <Icon
           src='assets/icons/addcircle.svg'

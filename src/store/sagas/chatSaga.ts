@@ -17,10 +17,6 @@ import {
 } from '../constants';
 import { Comment } from 'types/types';
 
-interface FetchMessagesAction {
-  type: typeof FETCH_COMMENTS;
-}
-
 interface SendMessageAction {
   type: typeof SEND_COMMENT;
   payload: { name: string; text: string };

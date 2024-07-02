@@ -7,14 +7,13 @@ import { setSelectedMenuItem } from "store/reducers/menuReducer";
 import { RootState } from "store/reducers/rootReducer";
 
 const MenuElement = styled.div`
-   display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 48px;
 `;
-
 
 const LogoElement = styled.div`
    position: relative;
@@ -49,12 +48,12 @@ const IconsContainer = styled.div`
   height: 248px;
 `;
 
-interface MenuElement {
+interface IMenuElement {
   id: string;
   src: string;
 }
 
-const menuElements: MenuElement[] = [
+const menuElements: IMenuElement[] = [
   { id: '100', src: 'assets/icons/home2.svg' },
   { id: '200', src: 'assets/icons/message.svg' },
   { id: '300', src: 'assets/icons/chart21.svg' },

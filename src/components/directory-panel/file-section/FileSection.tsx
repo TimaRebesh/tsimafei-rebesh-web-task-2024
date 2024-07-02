@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { IFile, ISectionElement } from 'types/types';
 import { Section } from '../section/Section';
-import { Icon } from 'ui/Icon';
-import { css } from '@emotion/react';
 import theme from 'styles/theme';
 
 interface IFileType {

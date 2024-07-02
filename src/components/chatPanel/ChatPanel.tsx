@@ -16,7 +16,6 @@ const NoneConversation = styled.div`
   width: 100%;
 `;
 
-
 const ChatPanel: React.FC = () => {
 
   const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);

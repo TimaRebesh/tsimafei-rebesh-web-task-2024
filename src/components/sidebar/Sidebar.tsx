@@ -2,7 +2,6 @@
 import { Icon } from '../../ui/Icon';
 import { SidebarMenu } from './SidebarMenu';
 import styled from '@emotion/styled';
-import theme from '../../styles/theme';
 
 const SidebarElement = styled.div`
   display: flex;
