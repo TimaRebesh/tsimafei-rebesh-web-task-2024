@@ -3,67 +3,67 @@ import styled from '@emotion/styled';
 import theme from 'styles/theme';
 
 const Header = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-width: 100%;
-height: 89px;
-`;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 89px;
+  `;
 
 const Content = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 24px;
-gap: 10px;
-width: 100%;
-height: 88px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  gap: 10px;
+  width: 100%;
+  height: 88px;
 `;
 
 const Control = styled.div`
-display: flex;
-align-items: center;
-gap: 10px;
-height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
 `;
 
 const MessagesSwitcher = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 6px;
-width: 121px;
-height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  width: 121px;
+  height: 30px;
 `;
 
 const MessagesSwitcherText = styled.div`
-width: 99px;
-height: 30px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 150%;
+  width: 99px;
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
 `;
 
 const MessagesIndicator = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 2px 8px;
-gap: 10px;
-width: 30px;
-height: 22px;
-background: #EDF2F7;
-border-radius: 24px;
-  span {
-    width: 14px;
-    height: 18px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 150%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2px 8px;
+  gap: 10px;
+  width: 30px;
+  height: 22px;
+    background: ${theme.colors.backgroundSecondary};
+  border-radius: 24px;
+    span {
+      width: 14px;
+      height: 18px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 150%;
+    }
 `;
 
 

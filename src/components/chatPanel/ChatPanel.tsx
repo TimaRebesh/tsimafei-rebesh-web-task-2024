@@ -9,10 +9,11 @@ import theme from 'styles/theme';
 import { useEffect } from 'react';
 import { fetchComments } from 'store/actions/chatActions';
 import { Preloader } from 'ui/preloader';
+import { DirectoryPanel } from '../directory-panel/DirectoryPanel';
 
 const NoneConversation = styled.div`
-background-color: ${theme.colors.secondary};
-width: 100%;
+  background-color: ${theme.colors.secondary};
+  width: 100%;
 `;
 
 
@@ -38,16 +39,7 @@ const ChatPanel: React.FC = () => {
         : <NoneConversation />
       }
       <Divider vertical />
-      {/* <MessageList messages={messages} />
-      <div css={chatInputStyles}>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Введите сообщение..."
-        />
-        <button css={chatButtonStyles} onClick={handleSendMessage}>Отправить</button>
-      </div> */}
+      <DirectoryPanel />
     </>
   );
 };

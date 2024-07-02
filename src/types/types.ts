@@ -2,6 +2,7 @@ export interface IUser {
   id: number;
   name: string;
   avatar: string;
+  position: string;
 }
 
 export interface Label {
@@ -35,4 +36,11 @@ export interface TransformedComments {
   isOwner: boolean;
   avatar: string;
   comments: Comment[];
+}
+
+export interface IFile {
+  id: string;
+  name: string;
+  type: string;
+  size: string;
 }

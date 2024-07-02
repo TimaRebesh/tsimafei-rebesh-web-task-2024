@@ -7,6 +7,7 @@ const theme = {
     textSecondary: '#718096',
     selected: '#615ef00f',
     success: '#68d391',
+    backgroundSecondary: '#EDF2F7',
   },
   fonts: {
     primary: "'Inter', sans-serif",

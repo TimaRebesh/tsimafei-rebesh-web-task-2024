@@ -1,10 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
-import { css } from '@emotion/react';
-
-import Header from './header/Header';
 import styled from '@emotion/styled';
-import theme from 'styles/theme';
 import { Divider } from 'ui/divider';
 import { MessagesHeader } from './MessagesHeader';
 import { MessageList } from './MessagesList';
@@ -26,5 +21,5 @@ export const MessagesPanel: React.FC = () => {
     </MessagePanelContainer>
   );
 }
-  ;
+
 
