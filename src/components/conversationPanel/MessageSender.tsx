@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { EDIT_COMMENT_REQUEST } from 'store/constants';
+import { EDIT_COMMENT_REQUEST, SEND_COMMENT } from 'store/constants';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,9 +90,8 @@ export const MessageSender = () => {
       const userName = currentUser.name;
       if (editedComment) {
         dispatch({ type: EDIT_COMMENT_REQUEST, payload: { id: editedComment.id, name: userName, text } });
-
       } else {
-        dispatch({ type: EDIT_COMMENT_REQUEST, payload: { name: userName, text } });
+        dispatch({ type: SEND_COMMENT, payload: { name: userName, text } });
       }
       setText('');
     }
