@@ -3,8 +3,11 @@ import { MessagesSearch } from './MessagesSearch';
 import { Message } from './Message';
 import { messagesData } from '../../utils/mockData';
 import { Preloader } from 'ui/preloader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/reducers/rootReducer';
+import { useEffect } from 'react';
+import { selectMessage } from 'store/actions/messagesActions';
+import { MessageData } from 'types/types';
 
 const Container = styled.div`
 display: flex;
@@ -26,7 +29,17 @@ width: 100%;
 export const MessageList = () => {
 
   const data = messagesData;
+  const dispatch = useDispatch();
+  const comments = useSelector((state: RootState) => state.chat.comments);
   const selectedMessage = useSelector((state: RootState) => state.selectedMessage.selectedMessage);
+
+  const select = (message: MessageData) => {
+    dispatch(selectMessage(message));
+  };
+
+  useEffect(() => {
+    select(data[0]);
+  }, [comments, data]);
 
   if (!data)
     return <Preloader />;
@@ -40,6 +53,7 @@ export const MessageList = () => {
             key={message.id}
             message={message}
             isActive={selectedMessage && message.id === selectedMessage.id}
+            select={select}
           />
         ))}
       </MessageListComponent>

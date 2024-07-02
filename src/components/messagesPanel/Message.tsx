@@ -3,8 +3,6 @@ import styled from '@emotion/styled';
 import { MessageData } from 'types/types';
 import { CustomLabel } from 'ui/label';
 import theme from 'styles/theme';
-import { useDispatch } from 'react-redux';
-import { selectMessage } from 'store/actions/messagesActions';
 
 const MessageContainer = styled.div<{ isActive: boolean; }>`
   display: flex;
@@ -69,15 +67,12 @@ const LabelsContainer = styled.div`
 interface MessageProps {
   message: MessageData;
   isActive: boolean;
+  select: (message: MessageData) => void;
 }
 
-export const Message: React.FC<MessageProps> = ({ message, isActive }) => {
+export const Message: React.FC<MessageProps> = ({ message, isActive, select }) => {
 
-  const dispatch = useDispatch();
-
-  const onClick = () => {
-    dispatch(selectMessage(message));
-  };
+  const onClick = () => select(message);
 
   return (
     <MessageContainer isActive={isActive} onClick={onClick}>

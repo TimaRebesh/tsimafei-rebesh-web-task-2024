@@ -28,3 +28,10 @@ export interface Comment {
   dateAdded: number;
   dateEdited: number;
 }
+
+export interface TransformedComments {
+  name: string;
+  isOwner: boolean;
+  avatar: string;
+  comments: Comment[];
+}

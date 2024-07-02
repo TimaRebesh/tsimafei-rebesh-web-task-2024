@@ -13,7 +13,7 @@ interface FetchMessagesAction {
 
 interface SendMessageAction {
   type: typeof SEND_COMMENT;
-  payload: string;
+  payload: { name: string; text: string };
 }
 
 function* fetchComments(): Generator<any, void, { data: Comment[] }> {
@@ -30,7 +30,8 @@ function* sendComment(
 ): Generator<any, void, { data: Comment }> {
   try {
     const response = yield call(axios.post, 'http://localhost:3001/comments', {
-      text: action.payload,
+      name: action.payload.name,
+      text: action.payload.text,
     });
     yield put(sendCommentSuccess(response.data));
   } catch (e) {

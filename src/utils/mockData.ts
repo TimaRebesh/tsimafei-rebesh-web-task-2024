@@ -1,13 +1,20 @@
-import { MessageData } from 'types/types';
+import { IUser, MessageData } from 'types/types';
+
+export const currentUser: IUser = {
+  id: 1223456,
+  name: 'User Cat',
+  avatar:
+    'https://images.pexels.com/photos/129753/pexels-photo-129753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+};
 
 export const messagesData: MessageData[] = [
   {
     id: 100,
     user: {
       id: 1,
-      name: 'Elmer Laverty',
+      name: 'Tim',
       avatar:
-        'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
     lastMessage: {
       date: 1573961291493,
@@ -71,8 +78,9 @@ export const messagesData: MessageData[] = [
     user: {
       id: 5,
       name: 'Geoffrey Mott',
+
       avatar:
-        'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     },
     lastMessage: {
       date: 1573965291493,
