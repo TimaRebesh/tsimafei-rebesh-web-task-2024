@@ -2,12 +2,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-interface CustomAvatarProps {
-  src?: string;
-  size?: number;
-  className?: string;
-}
-
 const AvatarContainer = styled.div<{ size: number; src?: string; }>`
   display: flex;
   align-items: center;
@@ -26,14 +20,22 @@ const Image = styled.img`
   height: 100%;
 `;
 
-export const Avatar: React.FC<CustomAvatarProps> = ({
+export const Avatar = ({
   src,
   size = 48,
   className,
+  containerStyles = {},
+  imgStyles = {}
+}: {
+  src?: string;
+  size?: number;
+  className?: string;
+  containerStyles?: object;
+  imgStyles?: object;
 }) => {
   return (
-    <AvatarContainer size={size} src={src} className={className}>
-      {src && <Image src={src} alt="Avatar" />}
+    <AvatarContainer size={size} src={src} className={className} style={containerStyles}>
+      {src && <Image src={src} alt="Avatar" style={imgStyles} />}
     </AvatarContainer>
   );
 };

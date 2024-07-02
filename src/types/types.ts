@@ -39,8 +39,19 @@ export interface TransformedComments {
 }
 
 export interface IFile {
-  id: string;
+  id: number;
   name: string;
   type: string;
   size: string;
+}
+
+export interface ISectionElement {
+  id: number;
+  name: string;
+  description: string;
+  src: string;
+  iconStyles?: {
+    container?: object;
+    img?: string;
+  };
 }

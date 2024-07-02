@@ -16,7 +16,6 @@ const NumberContainer = styled.div`
   padding: 2px 8px;
   background: ${theme.colors.backgroundSecondary};
   border-radius: 24px;
-  width: 24px;
   height: 22px;
 `;
 

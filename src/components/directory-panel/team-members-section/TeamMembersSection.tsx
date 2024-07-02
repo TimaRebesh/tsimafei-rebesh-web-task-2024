@@ -1,23 +1,12 @@
-/** @jsxImportSource @emotion/react */
-import styled from '@emotion/styled';
 import { IUser } from 'types/types';
-import { SectionTitle } from './SectionTitle';
-import { Member } from './Member';
+import { Section } from '../section/Section';
 
-const SectionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px 16px;
-  gap: 8px;
-  width: 362px;
-`;
-
-export const TeamMembersSection = ({ members }: { members: IUser[]; }) => (
-  <SectionContainer>
-    <SectionTitle title="Team Members" count={members.length} />
-    {members.map(member => (
-      <Member key={member.id} member={member} />
-    ))}
-  </SectionContainer>
-);
+export const TeamMembersSection = ({ members }: { members: IUser[]; }) => {
+  const convertedData = members.map(({ id, name, avatar, position }) => ({
+    id,
+    name,
+    src: avatar,
+    description: position
+  }));
+  return <Section title="Team Members" elements={convertedData} />;
+};

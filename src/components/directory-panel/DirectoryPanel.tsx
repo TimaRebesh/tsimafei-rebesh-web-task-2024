@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Divider } from 'ui/divider';
 import { TeamMembersSection } from './team-members-section/TeamMembersSection';
 import { DirectoryHeader } from './DirectoryHeader';
+import { FileSection } from './file-section/FileSection';
 
 const DirectoryContainer = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ export const DirectoryPanel = () => {
       <DirectoryHeader />
       <TeamMembersSection members={teamMembers} />
       <Divider />
-      {/* <FileSection files={files} /> */}
+      <FileSection files={files} />
     </DirectoryContainer>
   );
 };

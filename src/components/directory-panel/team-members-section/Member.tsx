@@ -9,9 +9,7 @@ const MemberContainer = styled.div`
   align-items: flex-start;
   padding: 12px;
   gap: 16px;
-  width: 330px;
-  height: 72px;
-  background: #FFFFFF;
+  width: 100%;
   border-radius: 12px;
 `;
 
@@ -19,10 +17,6 @@ const MemberDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 39px;
-`;
-
-const MemberName = styled.h4`
-  margin: 0;
 `;
 
 const MemberRole = styled.div`
@@ -37,7 +31,7 @@ export const Member = ({ member }: { member: IUser; }) => (
   <MemberContainer>
     <Avatar src={member.avatar} />
     <MemberDetailsContainer>
-      <MemberName>{member.name}</MemberName>
+      <h4>{member.name}</h4>
       <MemberRole>{member.position}</MemberRole>
     </MemberDetailsContainer>
   </MemberContainer>

@@ -8,6 +8,10 @@ const theme = {
     selected: '#615ef00f',
     success: '#68d391',
     backgroundSecondary: '#EDF2F7',
+    redColor: '#F56565',
+    greenColor: '#48BB78',
+    blueColor: '#4299E1',
+    purpleColor: '#9F7AEA',
   },
   fonts: {
     primary: "'Inter', sans-serif",

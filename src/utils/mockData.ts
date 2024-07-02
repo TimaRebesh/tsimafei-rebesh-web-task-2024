@@ -113,8 +113,8 @@ export const messagesData: MessageData[] = [
 export const getUsers = (): IUser[] =>
   messagesData.map((message) => message.user);
 export const getFiles = (): IFile[] => [
-  { id: '1', name: 'i9.pdf', type: 'PDF', size: '9mb' },
-  { id: '2', name: 'Screenshot-3817.png', type: 'PNG', size: '4mb' },
-  { id: '3', name: 'sharefile.docx', type: 'DOC', size: '555kb' },
-  { id: '4', name: 'Jerry-2020_I-9_Form.xxl', type: 'XXL', size: '24mb' },
+  { id: 200, name: 'i9.pdf', type: 'PDF', size: '9mb' },
+  { id: 201, name: 'Screenshot-3817.png', type: 'PNG', size: '4mb' },
+  { id: 202, name: 'sharefile.docx', type: 'DOC', size: '555kb' },
+  { id: 203, name: 'Jerry-2020_I-9_Form.xxl', type: 'XXL', size: '24mb' },
 ];
