@@ -4,7 +4,7 @@ import { currentUser, messagesData } from './mockData';
 export const transformCommentsToFitData = (
   comments: Comment[]
 ): TransformedComments[] => {
-  return comments.reduce((acc: TransformedComments[], comment) => {
+  return comments.reduce((acc: TransformedComments[], comment, indx) => {
     const lastBlock = acc[acc.length - 1];
     const isSameUser = lastBlock && lastBlock.name === comment.name;
 
@@ -18,6 +18,7 @@ export const transformCommentsToFitData = (
             .avatar || '';
 
       acc.push({
+        id: indx,
         name: comment.name,
         isOwner,
         avatar,

@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { TransformedComments } from 'types/types';
 import { Avatar } from 'ui/avatar';
 import theme from 'styles/theme';
+import { Control } from './Control';
 
 const MessageContainer = styled.div`
   display: flex;
@@ -17,12 +18,15 @@ const SingleMessage = styled.div<{ isRight: boolean; }>`
   gap: 16px;
   border-radius: 12px;
   justify-content: ${props => (props.isRight ? 'flex-end' : 'flex-start')};
+  position: relative;
 `;
 
 const MessageContent = styled.div<{ isOwner: boolean; }>`
+display: flex;
   background: ${props => (props.isOwner ? theme.colors.primary : '#f1f1f1')};
   border-radius: 12px;
   padding: 8px 16px;
+  position: relative;
 
   p {
     font-family: 'Inter', sans-serif;
@@ -48,6 +52,7 @@ export const Message = ({
   messageBlock: TransformedComments;
 }) => {
   const { isOwner, avatar, comments } = messageBlock;
+  const [showPopup, setShowPopup] = useState<string | null>(null);
 
   return (
     <MessageContainer>
@@ -58,6 +63,12 @@ export const Message = ({
           </AvatarWrapper>
           <MessageContent isOwner={isOwner}>
             <p>{message.text}</p>
+            <Control
+              message={message}
+              isOwner={isOwner}
+              showPopup={showPopup}
+              setShowPopup={setShowPopup}
+            />
           </MessageContent>
           <AvatarWrapper isRight={isOwner}>
             {isOwner && index === 0 && <Avatar src={avatar} />}

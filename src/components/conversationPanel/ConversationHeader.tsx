@@ -2,6 +2,7 @@ import { IUser } from 'types/types';
 import { Avatar } from 'ui/avatar';
 import styled from '@emotion/styled';
 import theme from 'styles/theme';
+import { Icon } from 'ui/Icon';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -82,13 +83,6 @@ const CallButton = styled.div`
   cursor: pointer;
 `;
 
-const CallIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  background: ${theme.colors.primary};
-  mask-image: url(assets/icons/call.svg);
-`;
-
 const CallText = styled.div`
   width: 30px;
   height: 20px;
@@ -115,7 +109,7 @@ export const ConversationHeader = ({ user }: { user: IUser; }) => {
         </UserInfo>
       </UserContent>
       <CallButton onClick={onCall}>
-        <CallIcon />
+        <Icon src='assets/icons/call.svg' backgroundColor={theme.colors.primary} />
         <CallText>Call</CallText>
       </CallButton>
     </HeaderContainer >

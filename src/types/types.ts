@@ -30,6 +30,7 @@ export interface Comment {
 }
 
 export interface TransformedComments {
+  id: number;
   name: string;
   isOwner: boolean;
   avatar: string;

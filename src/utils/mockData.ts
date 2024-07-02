@@ -1,7 +1,7 @@
 import { IUser, MessageData } from 'types/types';
 
 export const currentUser: IUser = {
-  id: 1223456,
+  id: 12234562323,
   name: 'User Cat',
   avatar:
     'https://images.pexels.com/photos/129753/pexels-photo-129753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',

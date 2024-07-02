@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { ConversationHeader } from './ConversationHeader';
 import { Divider } from "ui/divider";
 import { RootState } from "store/reducers/rootReducer";
-import { ConversationView } from "./ConversationView";
+import { ConversationView } from "./conversation-view/ConversationView";
 import { MessageSender } from "./MessageSender";
 import { useSelector } from "react-redux";
 

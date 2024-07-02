@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 import theme from "../../styles/theme";
 import { Icon } from "../../ui/Icon";
 import styled from "@emotion/styled";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedMenuItem } from "store/reducers/menuReducer";
 import { RootState } from "store/reducers/rootReducer";

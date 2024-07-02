@@ -2,7 +2,6 @@ import { Preloader } from "ui/preloader";
 import styled from "@emotion/styled";
 import { Comment, IUser, TransformedComments } from "types/types";
 import { Message } from "./Message";
-import { currentUser } from "utils/mockData";
 import { useEffect, useState } from "react";
 import { transformCommentsToFitData } from "utils/utils";
 
@@ -58,7 +57,7 @@ export const ConversationView = ({
     <ViewContainer>
       {preparedMessages.map((messageBlock) => (
         <Message
-          key={messageBlock.name}
+          key={messageBlock.id}
           messageBlock={messageBlock}
         />
       ))}

@@ -6,6 +6,9 @@ import {
   SEND_COMMENT,
   SEND_COMMENT_SUCCESS,
   SEND_COMMENT_FAILURE,
+  DELETE_COMMENT_REQUEST,
+  DELETE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAILURE,
 } from '../constants';
 
 export const fetchComments = () => ({
@@ -36,5 +39,20 @@ export const sendCommentSuccess = (message: Comment) => ({
 
 export const sendCommentFailure = (error: string) => ({
   type: SEND_COMMENT_FAILURE,
+  payload: error,
+});
+
+export const deleteCommentRequest = (id: string) => ({
+  type: DELETE_COMMENT_REQUEST,
+  payload: id,
+});
+
+export const deleteCommentSuccess = (id: string) => ({
+  type: DELETE_COMMENT_SUCCESS,
+  payload: id,
+});
+
+export const deleteCommentFailure = (error: string) => ({
+  type: DELETE_COMMENT_FAILURE,
   payload: error,
 });
